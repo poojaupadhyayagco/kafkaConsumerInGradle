@@ -1,0 +1,35 @@
+server:
+  port: 9080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: AET_DEV_REF_DATA_GID
+      max-poll-records: 200
+    properties:
+      max:
+        poll:
+          interval:
+            ms: 1800000
+      bootstrap:
+        servers: localhost:9092
+      schema:
+        registry:
+          url: http://localhost:8081
+      security:
+        protocol: PLAINTEXT
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username="" password="";
+      basic:
+        auth:
+          credentials:
+            source: ""
+          user:
+            info: ""
+
+logging:
+  level:
+    root: info
